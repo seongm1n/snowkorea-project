@@ -16,6 +16,9 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
           ),
+          Container(
+            color: Colors.black.withOpacity(0.6),
+          ),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -27,7 +30,7 @@ class LoginScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                   const SizedBox(height: 20),
