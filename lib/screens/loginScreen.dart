@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   const Text(
-                    'Please log in',
+                    '로그인',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -39,7 +39,7 @@ class LoginScreen extends StatelessWidget {
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.8),
-                      hintText: 'Username',
+                      hintText: '아이디',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide.none,
@@ -52,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.8),
-                      hintText: 'Password',
+                      hintText: '비밀번호',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide.none,
@@ -74,7 +74,54 @@ class LoginScreen extends StatelessWidget {
                           horizontal: 50, vertical: 15),
                       textStyle: const TextStyle(fontSize: 18),
                     ),
-                    child: const Text('Login'),
+                    child: const Text('로그인'),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    '또는',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      // 구글 로그인 로직 구현
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 50, vertical: 15),
+                      textStyle: const TextStyle(fontSize: 18),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset('assets/google_logo.png', height: 24),
+                        const SizedBox(width: 10),
+                        const Text('Google로 로그인',
+                            style: TextStyle(color: Colors.black87)),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      // 카카오 로그인 로직 구현
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.yellow,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 50, vertical: 15),
+                      textStyle: const TextStyle(fontSize: 18),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset('assets/kakao_logo.png', height: 24),
+                        const SizedBox(width: 10),
+                        const Text('카카오로 로그인',
+                            style: TextStyle(color: Colors.black87)),
+                      ],
+                    ),
                   ),
                 ],
               ),
