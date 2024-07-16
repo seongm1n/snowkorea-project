@@ -29,105 +29,89 @@ class LoginScreen extends StatelessWidget {
                   const Text(
                     '로그인',
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 28,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
                   const SizedBox(height: 20),
-                  TextField(
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white.withOpacity(0.8),
-                      hintText: '아이디',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white.withOpacity(0.8),
-                      hintText: '비밀번호',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MainScreen()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepPurple,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 50, vertical: 15),
-                      textStyle: const TextStyle(fontSize: 18),
-                    ),
-                    child: const Text('로그인'),
-                  ),
-                  const SizedBox(height: 20),
                   const Text(
-                    '또는',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      // 구글 로그인 로직 구현
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 50, vertical: 15),
-                      textStyle: const TextStyle(fontSize: 18),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset('assets/google_logo.png', height: 24),
-                        const SizedBox(width: 10),
-                        const Text('Google로 로그인',
-                            style: TextStyle(color: Colors.black87)),
-                      ],
+                    '소셜 계정으로 로그인하세요',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white70,
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      // 카카오 로그인 로직 구현
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.yellow,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 50, vertical: 15),
-                      textStyle: const TextStyle(fontSize: 18),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset('assets/kakao_logo.png', height: 24),
-                        const SizedBox(width: 10),
-                        const Text('카카오로 로그인',
-                            style: TextStyle(color: Colors.black87)),
-                      ],
-                    ),
+                  const SizedBox(height: 40),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildSocialLoginButton(
+                        onPressed: () {
+                          // 구글 로그인 로직 구현
+                        },
+                        backgroundColor: Colors.white,
+                        logo: 'assets/google_logo.png',
+                        label: 'Google',
+                      ),
+                      const SizedBox(width: 20),
+                      _buildSocialLoginButton(
+                        onPressed: () {
+                          // 카카오 로그인 로직 구현
+                        },
+                        backgroundColor: const Color(0xFFFEE500),
+                        logo: 'assets/kakao_logo.png',
+                        label: 'Kakao',
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildSocialLoginButton({
+    required VoidCallback onPressed,
+    required Color backgroundColor,
+    required String logo,
+    required String label,
+  }) {
+    return InkWell(
+      onTap: onPressed,
+      child: Container(
+        width: 130,
+        height: 50,
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(25),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(logo, height: 24),
+            const SizedBox(width: 8),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: label == 'Kakao' ? Colors.black87 : Colors.grey[700],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
